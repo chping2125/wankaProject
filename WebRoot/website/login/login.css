@@ -1,0 +1,184 @@
+@charset "utf-8";
+
+/*
+ * Copyright 2005-2013 shopxx.net. All rights reserved.
+ * Support: http://www.shopxx.net
+ * License: http://www.shopxx.net/license
+ * 
+ * Style - Login
+ * Version: 3.0
+ */
+
+/*-----------------------登录页面------------------------*/
+.login {
+	width: 350px;
+	margin: 0 auto;
+	background: #fafafa;
+	text-align: center;
+	padding-top: 60px;
+}
+
+.login_logo {
+	text-align: center;
+}
+div.login_form a{
+	color: #999;
+}
+div.login_form a:HOVER{
+	color: #F00;
+}
+
+.login_name,.login_password,.login_captcha,.verification {
+	-moz-appearance: none;
+	background: none repeat scroll 0 0 #fff;
+	border: 1px solid #e6e6e6;
+	border-radius: 6px;
+	color: #666;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	height: 20px;
+	line-height: 20px;
+	padding: 12px 10px;
+	width: 94%;
+	float: left;
+	position: relative;
+}
+
+.mytext:focus {
+	background: none repeat scroll 0 0 #fdfdfd;
+	box-shadow: 0 0 8px #eaeaea inset;
+}
+
+#captchaImage {
+	/* height: 35px;
+	width: 120px;
+	margin-left: 10px;*/
+	padding: 8px; 
+	
+}
+
+.regHeaderTip h1 {
+	font-size: 30px;
+	padding: 45px 0 25px 0;
+}
+
+input.login_btn {
+	-moz-appearance: none;
+	background: none repeat scroll 0 0 #f00;
+	border: none;
+	border-radius: 6px;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	font-size: 16px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	width: 330px;
+}
+
+input.login_btn:HOVER {
+	background: none repeat scroll 0 0 #E80000;
+}
+
+#loginForm .formdiv {
+	margin-bottom: 10px;
+	
+}
+div.login #loginForm .flogin{
+	width:330px;
+}
+ #loginForm .pwdiv {
+	height: 44px;
+}
+
+#loginForm .undiv {
+	height: 44px;
+}
+
+#loginForm .cadiv {
+	height: 44px;
+} 
+
+.login_tips {
+	padding: 10px 0;
+	color: #999;
+}
+
+.login_tips em {
+	padding: 0 5px;
+}
+
+span.l_t_1 a {
+	color: #369;
+}
+
+span.l_t_1 input {
+	margin-right: 5px;
+}
+
+span.l_t_2 {
+	*padding-top: 4px;
+}
+
+.login_footer {
+	text-align: center;
+	color: #999;
+	padding: 15px 0;
+	margin-top: 35px;
+	font-size: 12px;
+}
+.login_footer .copyright{
+	margin-left: -20px;
+}
+a.forget_password {
+	color: #999;
+	padding-right: 15px;
+}
+
+a.forget_password:hover {
+	color: #f00;
+}
+.text-ed{
+	color: #999;
+}
+a.login_reg {
+	background: none repeat scroll 0 0 #fff;
+	border: 1px solid #dfdfdf;
+	display: inline-block;
+	font-size: 16px;
+	height: 43px;
+	line-height: 43px;
+	margin-top: 25px;
+	text-align: center;
+	width: 100%;
+}
+
+a.login_reg:HOVER {
+	color: #F00;
+}
+
+span.reg_login {
+	font-size: 12px;
+	color: #999;
+	padding-top: 3px;
+}
+
+span.reg_login em a {
+	color: #369;
+	font-size: 13px;
+}
+
+.verification {
+	width: 145px;
+	margin-right: 20px;
+}
+
+.reg_content {
+	margin-top: 50px;
+}
+
+.reg_footer {
+	margin-top: 60px;
+}

@@ -1,0 +1,250 @@
+body,p,ul,li,ol,dl,dd,dt,h1,h2,h3,h4,h5,h6,fieldset,legend,input{
+	margin: 0;
+	padding: 0;
+}
+img,input{border: 0;}
+img{display:block;}
+a{text-decoration: none; color: #000;}
+li{list-style:none;}
+html,body{
+	font: 12px "微软雅黑";
+	min-width: 1080px;
+	height: 100%;
+	 overflow-y: hidden;  
+}
+.clear:after{
+	content:"";
+	clear:both;
+	display:block;
+	height: 0;
+	overflow:hidden;
+	visibility:hidden;
+}
+/* -------------------------header---------------------------- */
+.header{
+	background: #7ab5e9;
+	width: 100%;
+	min-width: 1080px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+.header_bg{
+	height: 90px;
+	background: url(../img/headbj.jpg) repeat-x left bottom;
+	position: relative;
+}
+.header_bg h1{
+	float: left;
+	margin: 30px 0 0 30px;
+	width: 427px;
+	height: 51px;
+	display: inline;
+}
+.header_bg h1 a{
+	display: inline-block;
+	width: 427px;
+	height: 51px;
+	
+}
+.h_login{
+	float: right;
+	background: #fff;
+	width: 264px;
+	height: 21px;
+	border-bottom: 1px solid #e3e2e2;
+	margin-right: 30px;
+}
+.h_login span{
+	display: inline-block;
+	width: 9px;
+	height: 22px;
+}
+.h_loginl{
+	float: left;
+	background: url(../img/public.png) no-repeat 0 0;
+}
+.h_loginr{
+	float: right;
+	background: url(../img/public.png) no-repeat -10px 0;
+}
+.h_login strong{
+	margin-left: 12px;
+	font-weight: 100;
+	color: #777;
+	line-height: 20px;
+	float: left;
+	padding: 0 16px 0 32px;
+	background: url(../img/public.png) no-repeat -484px 3px;
+}
+.h_login a{
+	color: #5f2793;
+	line-height: 20px;
+	float: left;
+	padding: 0 50px 0 20px;
+	background: url(../img/public.png) no-repeat -484px -18px;
+}
+.h_link{
+	position: absolute;
+	right: 20px;
+	bottom: 0;
+	margin-top: 9px;
+}
+.h_link li{
+	float: left;
+	margin: 0 4px;
+}
+.h_link li a{
+	display: inline-block;
+	width: 95px;
+	height: 56px;
+	text-align: center;
+	color: #fff;
+}
+.h_link li span{
+	display: inline-block;
+	width: 95px;
+	height: 32px;
+	background: url(../img/public.png) no-repeat -114px 0;
+}
+.h_link .h_link2 span{
+	background-position: -209px 0;
+}
+.h_link .h_link3 span{
+	background-position: -304px 0;
+}
+.h_link .h_link4 span{
+	background-position: -114px -112px;
+}
+.h_link .h_link5 span{
+	background-position: -209px -112px;
+}
+.h_link .h_link6 span{
+	background-position: -304px -112px;
+}
+.h_link .h_link7 span{
+	background-position: -399px -112px;
+}
+.h_link li .h_focus{
+	background: url(../img/public.png) no-repeat -19px 0;
+}
+.h_link li a:hover{
+	background: url(../img/public.png) no-repeat -19px 0;
+}
+.h_link .h_link1:hover span{
+	background-position: -114px -56px;
+}
+.h_link .h_link2:hover span{
+	background-position: -209px -56px;
+}
+.h_link .h_link3:hover span{
+	background-position: -304px -56px;
+}
+.h_link .h_link4:hover span{
+	background-position: -114px -168px;
+}
+.h_link .h_link5:hover span{
+	background-position: -209px -168px;
+}
+.h_link .h_link6:hover span{
+	background-position: -304px -168px;
+}
+.h_link .h_link7:hover span{
+	background-position: -399px -168px;
+}
+/* -------------------------container---------------------------- */
+.container{
+	height: 100%;
+}
+.con_main{
+	height: 100%;
+	width: 100%;
+	float: left;
+}
+.con_main .main_wrap{
+	margin-left: 197px;
+	margin-top: 90px;
+	height: 100%;
+}
+.con_main iframe{
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+.con_side{
+	width: 197px;
+	height: 100%;
+	display: inline;
+	float: left;
+	background: #999;
+	margin-left: -100%;
+	background: #417ec8 url(../img/leftbj.jpg) repeat-y right top;
+	position: relative;
+}
+.con_sidehide{
+	margin-top: 90px;
+}
+.con_sidehide a{
+	display: block;
+	height: 26px;
+	background: url(../img/e_01.jpg);
+}
+.con_sidetitle{
+	height: 36px;
+	background: url(../img/left_hover.jpg);
+	padding-left: 14px;
+}
+.con_sidetitle a{
+	display: block;
+	line-height: 36px;
+	color: #000;
+	padding-left: 25px;
+	background: url(../img/public.png) no-repeat -485px -44px;
+}
+.con_sidelink li a{
+	display: inline-block;
+	width: 197px;
+	height: 38px;
+}
+.con_sidelink li span{
+	display: inline-block;
+	width: 197px;
+	height: 38px;
+}
+.con_sidelink li i{
+	font-style: normal;
+	display: inline-block;
+	color: #b9ddff;
+	width: 197px;
+	line-height: 38px;
+	padding-left: 10px;
+	margin-left: 37px;
+	background: url(../img/public.png) no-repeat -496px -72px;
+}
+.con_sidelink li a:hover{
+	background: url(../img/left_04.jpg) no-repeat right top;
+}
+.con_sidelink li a:hover span{
+	background: url(../img/left_04.jpg) no-repeat right bottom;
+}
+.con_sidelink li a:hover i{
+	color: #fff;
+	padding-left: 26px;
+	margin-left: 14px;
+}
+.con_sidelink li .con_link5:hover i{
+	background-position: -484px -219px;
+}
+.con_sidelink li .con_link6:hover i{
+	background-position: -484px -247px;
+}
+.con_sidehide2{
+	display: inline-block;
+	width: 9px;
+	height: 41px;
+	position: absolute;
+	right: -9px;
+	top: 300px;
+	background: url(../img/public.png) no-repeat -473px 0;
+}

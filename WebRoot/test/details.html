@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>玩咖智能生活商城</title>
+		<script type="text/javascript" src="./libs/jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="./prd/styles/detailsApp@59247bd2d7206ed0215fbfad83c9669a.css"/>
+		<link rel="stylesheet" type="text/css" href="./iconfont/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="./Font-Awesome-4.4.0/css/font-awesome.min.css"/>
+	</head>
+	<body>
+		<div class="header"></div>
+
+		<div class="top com-bg clear"></div>
+
+		<div class="nav com-bg clear"></div>
+
+    <div class="conitainer com-bg"></div>
+
+		<div class="footer"></div>
+
+		<div class="sildbar"></div>
+
+    <script type="text/javascript" src="./prd/scripts/detailsApp@cfba71bcbacb2c94491f23e95a15f942.js"></script>
+		<script>
+      $('.search_btn').click(function(){
+        var value = $(this).siblings('input').val();
+				if(value !=null && value != ""){
+					jumpSearch(value);
+				}
+
+      });
+			$('.search_list_btn').click(function(){
+        var value = $(this).text();
+				if(value !=null && value != ""){
+					jumpSearch(value);
+				}
+      });
+			function jumpSearch(value){
+				url = "./searchList.html?proName="+value;
+        window.location.href = url;
+			}
+    </script>
+</html>

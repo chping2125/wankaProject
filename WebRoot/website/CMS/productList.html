@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>商品查找</title>
+		<link rel="stylesheet" type="text/css" href="css/shebei.css" />
+	</head>
+	<body>
+		<div class="main">
+			<ul>
+				<li class="m_first"><i>当前位置</i><span>&gt;&gt;</span></li>
+				<li><a href="">商品管理<span>&gt;&gt;</span></a></li>
+				<li><a href="">查找商品信息</a></li>
+			</ul>
+			<div class="search">
+				<span>搜索</span>
+				<form>
+					<label for="name">商品名称:</label>
+					<input id="name" type="text"/>
+					<label for="type">设备类型:</label>
+					<select id="type">
+						<option>-请选择-</option>
+						<option value="1">智能生活</option>
+			  			<option value="2">手机个性化配件</option>
+			  			<option value="3">充电和移动电源 </option>
+			  			<option value="4">耳机与音箱</option>
+			  			<option value="5">电脑与家电配件</option>
+			  			<option value="6">Apple配件</option>
+			  			<option value="7">玩咖生活方式</option>
+			  			<option value="8">增值业务</option>
+					</select>
+					<input class="ser_btn" type="submit" value="查询" />
+				</form>
+				<a href="" class="ser_hide"></a>
+			</div>
+
+			<table>
+				<thead>
+					<tr class="ta_edit">
+						<td class="ta_add" colspan="7"><a href=""></a></td>
+						<td class="ta_del"><a href=""></a></td>
+					</tr>
+					<tr class="ta_head">
+						<th><input type="checkbox" />全选</th>
+						<th>商品名称</th>
+						<th>设备名称</th>
+						<th>设备编号</th>
+						<th>创建日期 </th>
+						<th>设备状态</th>
+						<th>是否共享</th>
+						<th>修改</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>网络视频摄像头</td>
+						<td>Camera001</td>
+						<td>123546</td>
+						<td>2016/07/29</td>
+						<td class="sb_state"><a href=""></a></td>
+						<td class="sb_share"><a href=""></a></td>
+						<td class="sb_edit"><a href=""></a></td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>网络视频摄像头</td>
+						<td>Camera001</td>
+						<td>123546</td>
+						<td>2016/07/29</td>
+						<td class="sb_state"><a href=""></a></td>
+						<td class="sb_share"><a href=""></a></td>
+						<td class="sb_edit"><a href=""></a></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="ta_bottom clear">
+				<p class="ta_bleft">共有<span>20</span>条数据，当前第<strong>1</strong>页</p>
+				<div class="ta_bright">
+					<a class="ta_first" href="">首页</a>
+					<a class="ta_btn ta_focus" href="">1</a>
+					<a class="ta_btn" href="">2</a>
+					<a class="ta_btn" href="">3</a>
+					<a class="ta_next" href="">下一页</a>
+					<a class="ta_last" href="">尾页</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

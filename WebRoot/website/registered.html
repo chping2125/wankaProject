@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>会员注册</title>
+	<meta name="author" content="SHOP++ Team">
+	<meta name="copyright" content="SHOP++" />
+	<link href="registered/style-celink.css" rel="stylesheet" type="text/css"/>
+	<link href="registered/zebra_dialog.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="registered/jquery.js"></script>
+	<script type="text/javascript" src="registered/jquery.cookie.js"></script>
+	<script type="text/javascript" src="registered/jquery.validate.js"></script>
+	<script type="text/javascript" src="registered/zzsc-celink.js"></script>
+	<script type="text/javascript" src="registered/jsbn.js"></script>
+	<script type="text/javascript" src="registered/prng4.js"></script>
+	<script type="text/javascript" src="registered/rng.js"></script>
+	<script type="text/javascript" src="registered/rsa.js"></script>
+	<script type="text/javascript" src="registered/base64.js"></script>
+	<script type="text/javascript" src="registered/zebra_dialog.js"></script>
+	<script type="text/javascript" src="registered/common2.js"></script>
+	<script type="text/javascript">
+		$().ready(function() {
+		
+			var $registerForm = $("#registerForm");
+			var $username = $("#username");
+			var $password = $("#password");
+			var $captcha = $("#captcha");
+			var $captchaImage = $("#captchaImage");
+			var $submit = $(":submit");
+			var $agreement = $("#agreement");
+			
+			var $MobileForm=$("#f_password_form");
+			
+			// 注册协议
+			$agreement.hover(function() {
+				$(this).height(200);
+			});
+			
+			$("#checked_w").attr("checked","true");
+			// 更换验证码
+			$captchaImage.click(function() {
+				$captchaImage.attr("src", "/common/captcha.jhtml?captchaId=68ea5bca-a885-403a-86d6-db953391e2a9&timestamp=" + (new Date()).valueOf());
+			});
+			
+			// 表单验证
+			$registerForm.validate({
+				rules: {
+					email: {
+						required: true,
+						email: true,
+						remote: {
+							url: "/register/check_email.jhtml",
+							cache: false
+						}
+					},
+					password: {
+						required: true,
+						pattern: /^[^\s&\"<>]+$/,
+						minlength: 4
+					},
+					rePassword: {
+						required: true,
+						equalTo: "#password"
+					},
+					captcha: "required"
+				},
+				messages: {
+					email: {
+						pattern: "只允许包含中文、英文、数字、下划线",
+						remote: "用户名被禁用或已被注册"
+					},
+					password: {
+						pattern: "密码包含非法字符"
+					}
+				},
+				errorPlacement: function(error, element) {
+				   var n=element.attr("name");
+				   if(n=="captcha"){
+				   		error.appendTo(element.parent());
+				   }else{
+				        error.appendTo(element.parent());
+				   }
+				},
+				submitHandler: function(form) {
+					$.ajax({
+						url: "/common/public_key.jhtml",
+						type: "GET",
+						dataType: "json",
+						cache: false,
+						beforeSend: function() {
+							$submit.prop("disabled", true);
+						},
+						success: function(data) {
+							var rsaKey = new RSAKey();
+							rsaKey.setPublic(b64tohex(data.modulus), b64tohex(data.exponent));
+							var enPassword = hex2b64(rsaKey.encrypt($password.val()));
+							$.ajax({
+								url: $registerForm.attr("action"),
+								type: "POST",
+								data: {
+									username: $username.val(),
+									enPassword: enPassword,
+									email: $username.val()
+										,captchaId: "68ea5bca-a885-403a-86d6-db953391e2a9",
+										captcha: $captcha.val()
+								},
+								dataType: "json",
+								cache: false,
+								success: function(message) {
+									$.message2(message);
+									if (message.type == "success") {
+										// $("#tab1").hide();
+										//$("#tab2").show();
+										//$submit.prop("disabled", false);
+										window.setTimeout(function() {
+											$submit.prop("disabled", false);
+													location.href = "/index.html";
+										}, 3000);
+									} else {
+										$submit.prop("disabled", false);
+											$captcha.val("");
+											$captchaImage.attr("src", "/common/captcha.jhtml?captchaId=68ea5bca-a885-403a-86d6-db953391e2a9&timestamp=" + (new Date()).valueOf());
+									}
+								}
+							});
+							
+							$("#sendMsg").bind("click",function(){
+								$.ajax({
+									url: "/register/reSubmit.jhtml",
+									type: "POST",
+									data: {
+										email: $username.val()
+									},
+									dataType: "json",
+									cache: false,
+									success: function(message) {
+										$.message2(message);
+									}
+								});
+							});
+						}
+					});
+				}
+			});
+			
+			// 表单验证
+			$MobileForm.validate({
+				rules: {
+					mobile: {
+						required: true,
+						pattern: /^(1[3|4|5|7|8][0-9]{9})$/,
+						remote: {
+							url: "/register/check_mobile.jhtml",
+							cache: false
+						}
+					},
+					password: {
+						required: true,
+						pattern: /^[^\s&\"<>]+$/,
+						minlength: 4
+					},
+					rePassword: {
+						required: true,
+						equalTo: "#repassword2"
+					},
+					captcha: "required"
+				},
+				messages: {
+					mobile: {
+						pattern: "请输入11位手机号码",
+						remote: "用户名被禁用或已被注册"
+					},
+					password: {
+						pattern: "密码包含非法字符"
+					}
+				},
+				errorPlacement: function(error, element) {
+				   var n=element.attr("name");
+				   if(n=="captcha"){
+				   		error.appendTo(element.parent());
+				   }else{
+				        error.appendTo(element.parent());
+				   }
+				},
+				submitHandler: function(form) {
+					$.ajax({
+						url: "/common/public_key.jhtml",
+						type: "GET",
+						dataType: "json",
+						cache: false,
+						beforeSend: function() {
+							$submit.prop("disabled", true);
+						},
+						success: function(data) {
+							var rsaKey = new RSAKey();
+							rsaKey.setPublic(b64tohex(data.modulus), b64tohex(data.exponent));
+							var enPassword = hex2b64(rsaKey.encrypt($("#password2").val()));
+							$.ajax({
+								url: $MobileForm.attr("action"),
+								type: "POST",
+								data: {
+									username: $("#moblieUsername").val(),
+									enPassword: enPassword,
+									captcha: $("#captchaCode").val()
+								},
+								dataType: "json",
+								cache: false,
+								success: function(message) {
+									$.message2(message);
+									if (message.type == "success") {
+										window.setTimeout(function() {
+											$submit.prop("disabled", false);
+													location.href = "/index.html";
+										}, 3000);
+									} else {
+										$submit.prop("disabled", false);
+									}
+								}
+							});
+							
+						}
+					});
+				}
+			});
+		 	/*仿刷新：检测是否存在cookie*/
+				if($.cookie("captcha")){
+					var count = $.cookie("captcha");
+					var btn = $("#sendRegister");
+		        	btn.val(count+"秒重新获取").attr("disabled",true).css("cursor","not-allowed");
+		        	var resend = setInterval(function(){
+			        	count--;
+			        	if (count > 0){
+			            	btn.val(count+"秒重新获取").attr("disabled",true).css("cursor","not-allowed");
+			            	$.cookie("captcha", count, {path: "/", expires: (1/86400)*count});
+			        	}else {
+			        		clearInterval(resend);
+			       	 		btn.val("获取验证码").removeClass("disabled").removeAttr("disabled style");
+			        	}
+			    	}, 1000);
+				}
+		 	$("#sendRegister").click(function(){
+		 		var $moblie=$("#moblieUsername").val();
+		 		var type=/^(1[3|4|5|7|8][0-9]{9})$/;
+		 		var btn = $(this);
+				var count = 60;
+		 		if(!type.test($moblie)){
+		 			return;
+		 		}
+		 	    $.ajax({
+					url: "/register/check_username.jhtml",
+					type: "GET",
+					data: {
+					 	'username':  $("#moblieUsername").val()
+					},
+					cache: false,
+					success:function(data){
+						if(data){
+							$("#captchaCode").focus();
+					 		var $this=$(this);
+					 		var resend = setInterval(function(){
+					        	count--;
+					        	if (count > 0){
+					            	btn.val(count+"秒重新获取");
+					            	$.cookie("captcha", count, {path: "/", expires: (1/86400)*count});
+					        	}else {
+					        		clearInterval(resend);
+					       	 		btn.val("获取验证码").removeAttr("disabled style");
+					        	}
+					    	}, 1000);
+			    			btn.attr("disabled",true).css("cursor","not-allowed");
+							$.Zebra_Dialog(
+		' <div id="returnsForm" style="width:350px;height:100"> <input type="text" id="captcha2" name="captcha" class="text captcha fine_ver" maxlength="4" autocomplete="off" style="width:150px;"\/> <img id="captchaImage2" style="vertical-align:middle" class="captchaImage" src="/common/captcha.jhtml?captchaId=68ea5bca-a885-403a-86d6-db953391e2a9" title="点击更换验证码" \/> <\/br> <input type="button" class="fine_btn reg_btn" id="bottonok" value="提交" style="height: 30px; margin-top: 20px; margin-left: 100px;" \/> <\/div> ',						{'vcenter_short_message' : false,
+							    'type':     false,
+							    'title':    '图片验证码',
+							    'buttons': false,
+							    'onClose':  function(caption) {
+									$("#captcha2").val("");
+									//$("#returnsForm").empty();
+							    },
+							    'onShow':function(){
+							    	$("#captchaImage2").attr("src", "/common/captcha.jhtml?captchaId=68ea5bca-a885-403a-86d6-db953391e2a9&timestamp=" + (new Date()).valueOf());
+							    	// 更换验证码
+									$("#captchaImage2").click(function() {
+										$("#captchaImage2").attr("src", "/common/captcha.jhtml?captchaId=68ea5bca-a885-403a-86d6-db953391e2a9&timestamp=" + (new Date()).valueOf());
+									});
+									$("#captcha2").live("keydown",function(){
+										 document.onkeydown = function (e) {
+									      	var theEvent = window.event || e;
+								     	 	var code = theEvent.keyCode || theEvent.which;
+									      	if (code == 13) {
+									          $("#bottonok").click();
+									      	}
+								    	}
+									});
+									$("#bottonok").click(function(){
+								 		$.ajax({
+								 			url: "/register/check_captcha.jhtml",
+											type: "GET",
+											data: {
+												moblie: $("#moblieUsername").val(),
+												captchaId: "68ea5bca-a885-403a-86d6-db953391e2a9",
+												captcha: $("#captcha2").val()
+											},
+											beforeSend: function() {
+												$("#bottonok").prop("disabled", true);
+											},
+											dataType: "json",
+											cache: false,
+											success: function(datas) {
+												if (datas.type == "success") {
+													$.close();
+												//	daojishi(60);
+												} else {
+													alert(datas.content);
+													$("#bottonok").prop("disabled", false);
+													$("#captchaImage2").attr("src", "/common/captcha.jhtml?captchaId=68ea5bca-a885-403a-86d6-db953391e2a9&timestamp=" + (new Date()).valueOf());
+													return false;
+												}
+											}
+								 		});
+									});
+									
+							    }
+							});	
+						}else{
+							alert("用户名输入错误");
+						}
+					}
+				});
+				
+		 		
+		 	});
+		 	
+		 	function daojishi(time){
+		 		$("#sendRegister").prop("disabled", true);
+				$("#sendRegister").val(time+"秒后......");
+			 	if(time > 0){
+			       setTimeout(function(){ daojishi(time - 1); },1000);
+			   	}else{
+		   			$("#sendRegister").val("获取验证码");
+			      	$("#sendRegister").prop("disabled", false);
+			   	}
+		 	}
+		 	
+		});
+		</script>
+	<style type="text/css">
+		#sendRegister{
+			color: #000;
+		    float: right;
+		    font-weight: normal;
+		    height: 37px;
+		    padding-top: 0;
+		    border: 1px solid #dadada;
+		    width:90px;
+		    float:left;
+		}
+		#sendRegister:hover{
+			background:#cccccc;
+		}
+		
+		table th{
+			width:72px;
+		}
+		.fine_name{
+			float:left;
+		}
+		
+		.register {
+		    margin: 0 auto;
+		    width: 650px;
+		}
+		
+		.point_email {
+		    border-bottom: 1px dashed #c9c9c9;
+		    padding: 30px 0;
+		    text-align: center;
+		}
+		
+		.other {
+		    color: #999;
+		    padding: 30px 0 0 83px;
+		    text-align: left;
+		}
+		
+		.register p {
+		    line-height: 22px;
+		}
+		.register p {
+		    font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div class="f_password">
+		<div class="f_p_logo">
+			<a href="http://www.wan-ka.com/index.html">
+				<img src="registered/d74b5412-a9e7-4481-b86d-5e9d6fbd891c.png">
+			</a>
+		</div>
+	</div>
+  	<div class="forgerPassword register_title" id="tab1">
+    	<h1>注册&nbsp;玩咖智能生活商城&nbsp;账号</h1>
+    	<p class="suc_p">玩咖帐号能使用玩咖社区等其它服务。如果您已拥有玩咖帐号，则可
+          <a class="cor_yellow" href="login.html">在此登录</a>
+      	</p>
+    	<div id="reg_tab">
+	    	<div id="reg_tab_title">
+	         	<label><input type="radio" name="reg" value="手机注册"><span>手机注册</span></label>
+	         	<label class="selected"><input type="radio" name="reg" value="邮箱注册" id="checked_w" checked="checked"><span>邮箱注册</span></label>
+	    	</div>
+	    	<div id="reg_tab_content">
+	    		<!--------------手机注册-------------->
+		       <div class="hide f_password_form">
+			      <form id="f_password_form" action="http://www.wan-ka.com/register/registerSubmit.jhtml" method="post" novalidate="novalidate">
+			        <table width="700px" border="1" cellspacing="0" cellpadding="0">
+			          <tbody><tr>
+			            <th scope="row"><span class="requiredField">*</span>手机号码:</th>
+			            <td><input type="text" class="fine_name text" name="mobile" id="moblieUsername"><input id="sendRegister" type="button" value="获取验证码" autocomplete="off" class="btn_phone_reg"></td>
+			          </tr>
+			          <tr>
+			            <th scope="row"><span class="requiredField text">*</span>验证码:</th>
+			            <td><input type="text" class="fine_ver text captcha_w" name="captcha" id="captchaCode" maxlength="6"></td>
+			          </tr>
+			          <tr>
+			            <th scope="row"><span class="requiredField">*</span>设置密码:</th>
+			            <td><input type="password" id="password2" name="password" class="fine_password text" maxlength="20" autocomplete="off"></td>
+			          </tr>
+			          <tr>
+			            <th scope="row"><span class="requiredField">*</span>确认密码:</th>
+			            <td><input id="repassword2" type="password" name="rePassword" class="fine_password text" maxlength="20" autocomplete="off"></td>
+			          </tr> 
+			          <tr>
+			            <th scope="row">&nbsp;</th>
+			            <td><input type="submit" value="立刻注册" class="fine_btn reg_btn"></td>
+			          </tr>
+			          <tr>
+			            <th scope="row">&nbsp;</th>
+			            <td><font color="#999">点击“立即注册”，即表示您同意并愿意遵守玩咖 </font><a target="_blank" style="color: #f00; text-decoration:underline;" href="http://www.wan-ka.com/register/agreement.jhtml">注册协议</a></td>
+			          </tr>
+			        </tbody></table>
+			      </form>
+			    </div>
+	    		<!--------------邮箱注册-------------->
+		        <div class="f_password_form">
+			      <form id="registerForm" action="http://www.wan-ka.com/register/submit.jhtml" method="post" novalidate="novalidate">
+			        <table border="0" cellspacing="0" cellpadding="0">
+			          <tbody><tr>
+			            <th scope="row"><span class="requiredField">*</span>邮箱:</th>
+			            <td>
+			            	<input type="text" id="username" name="email" class="fine_name text" maxlength="50">
+			            </td>
+			          </tr>
+			          <tr>
+			            <th scope="row"><span class="requiredField">*</span>设置密码:</th>
+			            <td><input type="password" id="password" name="password" class="fine_password text" maxlength="20" autocomplete="off"></td>
+			          </tr>
+			          <tr>
+			            <th scope="row"><span class="requiredField">*</span>确认密码:</th>
+			            <td><input type="password" name="rePassword" class="fine_password text" maxlength="20" autocomplete="off"></td>
+			          </tr> 
+			          <tr>
+			            <th scope="row"><span class="requiredField">*</span>验证码:</th>
+			            <td>
+			            	<input type="text" id="captcha" name="captcha" class="text captcha fine_ver" maxlength="4" autocomplete="off">
+			            	<img id="captchaImage" style="vertical-align:middle" class="captchaImage" src="registered/captcha.jhtml" title="点击更换验证码">
+			            </td>
+			          </tr>
+			          <tr>
+			            <th scope="row">&nbsp;</th>
+			            <td><input id="" type="submit" class="fine_btn reg_btn" value="立刻注册"></td>
+			          </tr>
+			          <tr>
+			            <th scope="row">&nbsp;</th>
+			            <td><font color="#999">点击“立即注册”，即表示您同意并愿意遵守玩咖 </font><a target="_blank" style="color: #f00; text-decoration:underline;" href="http://www.wan-ka.com/register/agreement.jhtml">注册协议</a></td>
+			          </tr>
+			        </tbody></table>
+			      </form>
+			    </div>
+	    </div>
+	</div> 
+ </div>
+ 
+ 
+<div class="forgerPassword register_title" id="tab2" style="display:none;">
+    <div id="reg_tab">
+	    <!--------------手机注册-------------->
+       	<div class="hide f_password_form">
+       		<h1>还差一步，请激活您的帐号</h1>
+   			<div class="register">
+		        <div class="point_email">
+		        	<p>系统已经发送了一封激活邮件到您的邮箱</p><p>请访问您的邮箱，点击邮件中的链接便可激活您的帐号</p>
+		        </div>
+		        <div class="other">
+		        	<p>&nbsp;&nbsp;如果没有收到激活邮件：</p><p>• 也许邮件被您的邮箱误认为是垃圾邮件而放到垃圾箱中，请检查一下</p>
+		        	<p>• 或者，您可以<a href="javascript:void(0)" class="action" id="sendMsg">点此重新发送激活邮件</a></p>
+		        </div>
+	        </div>
+		</div>
+    </div>
+</div>
+
+  <div class="fine_footer">
+  	<p class="copyright">Copyright © 2005-2013 玩咖智能生活商城 版权所有</p>
+    <p class="copyright">粤ICP备11060697号-2</p>
+  </div>
+  
+  <script language="javascript">
+$('#reg_tab_title label').click(function(){
+$(this).addClass("selected").siblings().removeClass();//removeClass就是删除当前其他类；只有当前对象有addClass("selected")；siblings()意思就是当前对象的同级元素，removeClass就是删除；
+$("#reg_tab_content > div").hide().eq($('#reg_tab_title label').index(this)).show();
+});
+</script> 
+
+</body></html>

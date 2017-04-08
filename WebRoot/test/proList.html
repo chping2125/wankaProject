@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>玩咖-商品列表</title>
+    <script type="text/javascript" src="./libs/jquery.js"></script>
+    <link rel="stylesheet" href="./prd/styles/proListApp@e22c2106adbc174b794903517db45e37.css" />
+    <link rel="stylesheet" type="text/css" href="./iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="./Font-Awesome-4.4.0/css/font-awesome.min.css"/>
+  </head>
+  <body>
+    <div class="header"></div>
+
+    <div class="top com-bg clear"></div>
+
+		<div class="nav com-bg clear"></div>
+
+    <div class="proList com-bg"></div>
+
+    <div class="footer"></div>
+
+		<div class="sildbar"></div>
+
+    <script type="text/javascript" src="./prd/scripts/proListApp@40c8549d7e6a89a0dabfde632f64b482.js"></script>
+    <script>
+      //切换页码
+      function pageJump(pageNum,pageTotal,pageLen){
+
+        //var URL = '/go/getNewProList?pageNum='+pageNum+'&pageTotal='+pageTotal;
+        var URL = '../go/getNewProList';
+        getDate($('.pro_ul'),URL);
+        //页码变色
+        $('.page').each(function(){
+          $(this).addClass('currentPage').siblings('a').removeClass('currentPage');
+          //$(this).siblings('a')[0].href="javascript:pageJump(1,"+pageTotal+","+pageLen+")";
+        });
+        //firstPage perviousPage
+				$('.firstPage')[0].href = "javascript:pageJump(1,"+pageTotal+","+pageLen+")";
+				$('.previousPage')[0].href = "javascript:pageJump("+(pageNum-1)+","+pageTotal+","+pageLen+")";
+        if(pageNum ==1 ){
+          $('.firstPage')[0].removeAttribute('href');
+  				$('.previousPage')[0].removeAttribute('href');
+          $('.firstPage')[0].style.color = '#ccc';
+  				$('.previousPage')[0].style.color = '#ccc';
+        }else{
+          $('.firstPage')[0].style.color = '#f00';
+  				$('.previousPage')[0].style.color = '#f00';
+        }
+        //nextPage lastPage
+				$('.nextPage')[0].href = "javascript:pageJump("+(pageNum+1)+","+pageTotal+","+pageLen+")";
+				$('.lastPage')[0].href = "javascript:pageJump("+pageLen+","+pageTotal+","+pageLen+")";
+        var lastNum = Math.ceil(pageLen/pageTotal);
+        if(lastNum ==pageNum ){
+          $('.nextPage')[0].removeAttribute('href');
+  				$('.lastPage')[0].removeAttribute('href');
+          $('.nextPage')[0].style.color = '#ccc';
+  				$('.lastPage')[0].style.color = '#ccc';
+        }
+      }
+
+      //根据页码获取数据
+      function getDate(node,URL){
+        $.ajax({
+          url: URL,
+          method: 'get',
+          dataType: 'json',
+          success: function(date){
+            if(date != null){
+                var tag ='';
+                for(var i = 0;i<date.newProList.length;i++){
+                  var str = '';
+                  /*可根据不通的项目自定义下面部分*/
+                  str += '<li><div class=\"pro_li\"><div class=\"item-thumb\">';
+                  str += '<a href=\"#\">';
+                  str += '<img src=\"./'+date.newProList[i].image+'\" width=\"220px\" height=\"220px\"></a></div><div class=\"item-info\">';
+                  str += '<h3><a href=\"#\">'+date.newProList[i].name+'</a> </h3>';
+                  str +='<p class="item_price">'+date.newProList[i].price+'</p>';
+                  str +='<div class="item_star"><table><tbody><tr><td><span><div class="score10"></div></span></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+                  str +='<td><em><a href="#">1人评价</a></em></td></tr></tbody></table></div>';
+                  str +='<p class="pro_btn">';
+                  str +='<a class="ad J_addCart" href="javascript:void(0);" id="addCart" data-disabled="false" data-package="false" rel="nofollow"><i class="fa fa-plus"></i> 购物车</a>';
+                  str +='<a class="ad ad2 J_addFav" href="javascript: void(0);" id="addFavorite"><i class="fa fa-heart"></i> 收藏</a>';
+                  str +='</p></div></div></li>';
+
+                  tag += str;
+                }
+                node.html(tag);
+            }
+          }
+        });
+      }
+    </script>
+    <script>
+      $('.search_btn').click(function(){
+        var value = $(this).siblings('input').val();
+				jumpSearch(value);
+      });
+			$('.search_list_btn').click(function(){
+        var value = $(this).text();
+				jumpSearch(value);
+      });
+			function jumpSearch(value){
+				url = "./searchList.html?proName="+value;
+        window.location.href = url;
+			}
+    </script>
+
+  </body>
+</html>

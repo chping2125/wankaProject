@@ -1,0 +1,68 @@
+@charset "UTF-8";body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,fieldset,lengend,button,input,textarea,th,td{margin:0;padding:0}
+body,button,input,select,textarea{font:14px "微软雅黑",sans-serif;line-height:35px}
+h1{font-size:18px}
+h2{font-size:16px}
+h3{font-size:14px;font-weight:400}
+h4,h5,h6{font-size:100%}
+address,cite,dfn,em,var,i{font-style:normal}
+code,kbd,pre,samp,tt{font-family:"微软雅黑",Courier,monospace}
+small{font-size:12px}
+ul,ol{list-style:none}
+a{text-decoration:none;color:#333}
+a:hover{text-decoration:none;color:#F00}
+abbr[title],acronym[title]{border-bottom:1px dotted;cursor:help}
+q:before,q:after{content:''}
+legend{color:#000}
+fieldset,img{border:0}
+button,input,select,textarea{font-size:100%}
+table{border-collapse:collapse;border-spacing:0}
+hr{border:0;height:1px}
+html{overflow-y:scroll}
+.left{float:left}
+.right{float:right}
+.clear{clear:both}
+.wrap{width:1190px;margin:0 auto}
+body{background:#fff}
+.clearfix:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
+.clearfix{display:block}
+html[xmlns] .clearfix{display:block}
+* html .clearfix{height:1%}
+.f_password{background:#ececec;padding:30px 0;border-bottom:1px solid #d9d9d9}
+.f_p_logo{width:900px;margin:0 auto}
+.comment_list table,.comment_list table tr,.comment_list table,td{border:0}
+.forgerPassword{background:#f9f9f9;border:1px solid #dadada;padding:20px;min-height:460px;width:860px;margin:0 auto;margin-top:70px}
+.forgerPassword h1{color:#F00;border-bottom:1px dotted #dfdfdf;padding:0 20px 15px 10px;margin-bottom:40px;font-size:22px}
+.suc_p{border-bottom:1px dashed #e3e3e3;color:#999;padding:0 0 20px 10px}
+.suc_p a{color:#f00;text-decoration:underline}
+#reg_tab_title{width:490px;margin:0 auto;font-size:16px;font-weight:400;padding:15px 0}
+#reg_tab_title label{margin-right:45px}
+#reg_tab_title .selected{color:#356aa0;border-bottom:0}
+#reg_tab_title span{font-size:16px}
+#reg_tab_content .hide{display:none}
+.hide{display:none}
+.requiredField{color:#f00;padding-right:5px}
+.forgerPassword{background:#f9f9f9;border:1px solid #dadada;padding:20px;min-height:460px;width:860px;margin:0 auto;margin-top:70px}
+.hide{display:none}
+.f_password_form{width:630px;margin:0 auto}
+.register_title h1{color:#f00;font-size:22px;margin-bottom:0;padding:0 20px 15px 10px;border:0}
+.register{margin:0 auto;width:650px}
+.point_email{border-bottom:1px dashed #c9c9c9;padding:30px 0;text-align:center}
+.register p{font-size:14px}
+.other{color:#999;padding:30px 0 0 83px;text-align:left}
+.fine_footer{text-align:center;color:#999;padding:10px 0;margin-top:25px}
+#sendRegister{color:#000;float:right;font-weight:normal;height:37px;padding-top:0;border:1px solid #dadada;width:90px;float:left}
+#sendRegister:hover{background:#ccc}
+.fine_name,.fine_password,.fine_ver{width:260px;height:33px;line-height:33px;border:1px solid #dadada;padding-left:5px;border-radius:3px;vertical-align:middle;margin:0 10px}
+.f_password_form{width:630px;margin:0 auto}
+.f_password_form table,.f_password_form table th{border:0;padding:6px 0}
+.f_password_form table th{text-align:right}
+.f_password_form span{color:#f00;padding-right:5px}
+.fine_btn{width:100px;height:32px;line-height:32px;background:#F00;border:0;cursor:pointer;color:#fff;border-radius:3px;margin-left:10px}
+.fine_footer{text-align:center;color:#999;padding:10px 0;margin-top:25px}
+table th{width:72px}
+.fine_name{float:left}
+.register{margin:0 auto;width:650px}
+.point_email{border-bottom:1px dashed #c9c9c9;padding:30px 0;text-align:center}
+.other{color:#999;padding:30px 0 0 83px;text-align:left}
+.register p{line-height:22px}
+.register p{font-size:14px}

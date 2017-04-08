@@ -1,0 +1,16 @@
+CACHE MANIFEST  
+#VERSION 1.1
+# 直接缓存的文件  
+CACHE:
+libs/jquery.js
+prd/styles/app@5dec3dd2055d8f424609aaebdb166194.css
+iconfont/iconfont.css
+prd/scripts/app@c3ec49c9eaaaa4a7e7328f2bde469386.js
+  
+#需要在线的文件  
+NETWORK:
+#意思就是除了上面需要缓存的其他都不缓存。
+*
+ 
+# 替代方案  
+FALLBACK:

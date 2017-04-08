@@ -1,0 +1,391 @@
+/* =============================banner========================= */
+.banner{
+	height: 420px;
+	width: 944px;
+	position: relative;
+	overflow: hidden;
+	z-index: 0;
+	left: 246px;
+}
+.banner_bg{
+	position: absolute;
+	width: 945px;
+	height: 420px;
+	left: 50%;
+	margin-left: -472px;
+	overflow: hidden;
+}
+.banner_box{
+	position: absolute;
+	height: 420px;
+	width: 3780px;
+	font-size: 0;
+	letter-spacing: -5px;
+}
+
+.banner_btn{
+	position: absolute;
+	width: 100%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	top: 200px;
+	font:  20px "宋体";
+	font-weight: bold;
+}
+.banner_btn span{
+	background: #000;
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+	float: left;
+	width: 36px;
+	height: 70px;
+	line-height: 70px;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+	font-size: 50px;
+}
+span.banner_rbtn{
+	float: right;
+}
+.banner_btn span:hover{
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+
+.banner_num{
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	bottom: 20px;
+	text-align: center;
+}
+.banner_num span{
+	width: 8px;
+	height: 8px;
+	display: inline-block;
+	margin-right: 15px;
+	background: #ccc;
+	border-radius: 50%;
+}
+.banner_num .seclect{
+	background: #fff;
+}
+.banner_num span:hover{
+	background: #fff;
+	cursor: pointer;
+}
+.banner_bottom{
+	position: relative;
+	left: 246px;
+	border: 1px solid #ccc;
+	width: 942px;
+	overflow: hidden;
+}
+.banner_bottom ul{
+	width: 946px;
+}
+.banner_bottom li{
+	float: left;
+}
+.banner_bottom a{
+	display: block;
+	width: 314px;
+	height: 170px;
+	border-right: 1px solid #ccc;
+}
+/* =======================staratPro====================== */
+.startPro{
+	margin-top: 60px;
+}
+.sp_title h3{
+	font-size: 18px;
+	float: left;
+}
+.sp_title div{
+	float: right;
+}
+.sp_title span{
+	display: inline-block;
+	text-align: center;
+	width: 32px;
+	height: 19px;
+	font-family: "宋体";
+	font-size: 18px;
+	font-weight: bold;
+	border: 1px solid #ccc;
+	letter-spacing: -5px;
+	cursor: pointer;
+}
+.sp_title span:hover{
+	background: #eceaea;
+}
+.sp_title .sp_t_left{
+	margin-right: -3px;
+	border-right: 0;
+}
+.sp_Pro{
+	margin-top: 5px;
+	border:1px solid #ccc;
+	overflow: hidden;
+	height: 326px;
+	position: relative;
+}
+.sp_ul{
+	width: 2400px;
+	position: absolute;
+}
+.sp_ul .sp_li{
+	float: left;
+	border-right: 1px solid #ccc;
+}
+.sp_ul .sp_l_div{
+	border: 6px solid #fff;
+	padding: 10px;
+}
+.sp_l_div:hover{
+	border-color: #eceaea;
+}
+.sp_l_div:hover .sp_title{
+	color: #f00;
+}
+.sp_ul .sp_title{
+	padding: 15px 0 0 15px;
+	font-size: 16px;
+	line-height: 20px;
+	display: block;
+}
+.sp_ul span{
+	display: block;
+	padding: 5px 15px;
+	font-size: 14px;
+}
+.sp_img{
+	display: block;
+	margin-top: 10px;
+}
+/* ============================newsPro========================== */
+.new_Pro{
+	margin-top: 60px;
+}
+.sp_title a{
+	float: right;
+	font-size: 14px;
+}
+.sp_title a:hover{
+	color: #f00;
+}
+.new_left{
+	margin-top: 10px;
+	float: left;
+	border: 1px solid #ccc;
+	height: 653px;
+	width: 890px;
+	overflow: hidden;
+}
+.new_left .sp_ul{
+	width: 892px;
+}
+.sp_li_first{
+	width: 593px;
+	height: 326px;
+}
+.sp_li_first .sp_img{
+	margin: 0;
+}
+.new_left  .sp_li{
+	border-bottom: 1px solid #ccc;
+}
+.new_right{
+	margin-top: 10px;
+	float: left;
+	border: 1px solid #ccc;
+	border-left: 0;
+}
+.new_right li{
+	width: 256px;
+	height: 73px;
+	padding: 28px 20px 20px;
+	border-bottom: 1px solid #ccc;
+	position: relative;
+}
+.new_right div{
+	float: left;
+	width: 176px;
+}
+.new_right h4{
+	line-height: 28px;
+	font-size: 16px;
+	font-weight: 100;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	
+}
+.new_right span{
+	line-height: 24px;
+	margin-right: 5px;
+	color: #f00;
+	font-size: 16px;
+}
+.new_right del{
+	color: #ccc;
+}
+.new_right strong{
+	position: absolute;
+	padding: 2px 30px;
+	background: #f00;
+	color: #fff;
+	left: 20px;
+	top: 0;
+	font-weight: normal;
+}
+li.new_news{
+	width: 256px;
+	height: 247px;
+	border: 0;
+	padding: 20px;
+	overflow: hidden;
+}
+.new_news h3{
+	font-size: 18px;
+	font-weight: 100;
+	padding-bottom: 7px;
+}
+.new_news li{
+	width: 256px;
+	height: 20px;
+	padding: 10px 0;
+	line-height: 20px;
+	border-bottom: 1px solid #ccc;
+	position: static;
+}
+.new_news i{
+	padding-right: 5px;
+	float: left;
+}
+.new_news a{
+	display: block;
+	font-size: 14px;
+	width: 244px;
+	
+}
+.new_news strong{
+	position: static;
+	padding: 0;
+	background: #fff;
+	color: #000;
+	font-weight: normal;
+	float: left;
+	width: 226px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.new_news span{
+	float: left;
+	line-height: 20px;
+	margin:0;
+	color: #000;
+	font-size: 16px;
+	font-family: "宋体";
+}
+.new_news a:hover strong{
+	color: #f00;
+}
+.new_news a:hover span{
+	color: #f00;
+}
+/* ===========================allLove========================== */
+.allLove{
+	margin-top: 60px;
+}
+.al_right li{
+	padding: 18px 20px 17px;
+}
+.al_right li:hover h4{
+	color: #f00;
+}
+.al_r_title h3{
+	line-height: 72px;
+	font-size: 24px;
+	text-align: center;
+}
+li.al_r_title span{
+	color: #f00;
+	font-size: 24px;
+}
+.al_right span{
+	color: #ccc;
+}
+.al_right div{
+	width: 176px;
+}
+.al_right i{
+	float: left;
+	height: 73px;
+	width: 30px;
+	line-height: 60px;
+	font-size: 40px;
+	font-style: normal;
+}
+.al_t_t_red{
+	color: #f00;
+}
+.al_t_t_ccc{
+	color: #9e9d9d;
+}
+/* ==========================hotPro=========================== */
+.hotPro{
+	margin-top: 60px;
+}
+.hot_pros{
+	width: 1187px;
+	height: 395px;
+	overflow: hidden;
+}
+.hot_pros .sp_ul{
+	width: 1192px;
+}
+.hot_pros .sp_li{
+	border-bottom: 0;
+}
+/* ============================salePro================================= */
+.salePro{
+	margin: 60px auto;
+}
+.s_pros{
+	height: 326px;
+}
+.s_pros .sp_li{
+	position: relative;
+}
+.s_sale{
+	position: absolute;
+	top: 0;
+	right: 40px;
+	padding: 2px 0;
+	width: 80px;
+	text-align: center;
+	background: #f00;
+	color: #fff;
+}
+.hot_comments i{
+	display: inline-block;
+	width: 60px;
+	height: 14px;
+	padding-right: 5px;
+	border-right: 1px solid #ccc;
+	margin-right: 5px;
+	background: url(../images/review.gif) no-repeat 0 -363px;
+}
+.hot_comment_p{
+	width: 264px;
+	background: #eaeaea;
+    line-height: 20px;
+    height: 40px;
+}
+
+

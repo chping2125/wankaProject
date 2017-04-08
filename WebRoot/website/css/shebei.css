@@ -1,0 +1,192 @@
+body,p,ul,li,ol,dl,dd,dt,h1,h2,h3,h4,h5,h6,fieldset,legend,input{
+	margin: 0;
+	padding: 0;
+}
+img,input{border: 0;}
+img{display:block;}
+a{text-decoration: none; color: #999;}
+li{list-style:none;}
+html,body{
+	height: 100%;
+	font: 12px "微软雅黑";
+}
+.clear:after{
+	content:"";
+	clear:both;
+	display:block;
+	height: 0;
+	overflow:hidden;
+	visibility:hidden;
+}
+/* ---------------------------main------------------------------- */
+.main{
+	height: 100%;
+	background: #fff url(../img/right_bj.jpg) repeat-y left top;
+	padding-left: 14px;
+}
+.main ul{
+	height: 24px;
+	border-bottom: 1px solid #ccc;
+}
+.main li{
+	float: left;	
+}
+.m_first i{
+	font-style: normal;
+	padding-left: 16px;
+	line-height: 24px;
+	background: url(../img/public.png) no-repeat 0 -56px;
+}
+.main li a{
+	color: #000;
+	line-height: 24px ;
+}
+.main a:hover{
+	color: #2676DD;
+}
+.main li span{
+	padding: 5px;
+}
+.search{
+	height: 51px;
+}
+.search span{
+	float: left;
+	display: inline-block;
+	padding: 0 10px 0 40px;
+	line-height: 50px;
+	background: url(../img/public.png) no-repeat 0 -112px;
+}
+.search form{
+	float: left;
+}
+.search label{
+	line-height: 50px;
+	margin-left: 18px;
+}
+.search input{
+	border: 1px solid #bebebe;
+	height: 22px;
+	width: 120px;
+	margin-top: 13px;
+}
+.search select{
+	width: 120px;
+	height: 22px;
+	color: #666;
+}
+.search .ser_btn{
+	margin-left: 24px;
+	width: 56px;
+	background: #fff url(../img/selbtn.gif) repeat-x left bottom;
+	cursor: pointer;
+}
+.search .ser_btn:hover{
+	background: #fff url(../img/selbtn-.gif) repeat-x left bottom;
+}
+.ser_hide{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	line-height: 50px;
+	float: right;
+	margin: 12px 12px 0 0;
+	background: url(../img/public.png) no-repeat -56px -74px;
+}
+
+.main table{
+	width: 99%;
+	border: 1px solid #bebebe;
+	border-collapse: collapse;
+	text-align: center;
+}
+.main .ta_edit{
+	background: url(../img/pbj.jpg) repeat-x;
+	width: 33px;
+}
+.main .ta_edit td{
+	border: 0;
+}
+.main .ta_head {
+	background: #f1f1f1;
+}
+.main .ta_head th{
+	border-top: 0;
+}
+.main .ta_add{
+	text-align: right;
+	padding-right: 15px;
+}
+.main .ta_del{
+	background: url(../img/public.png) no-repeat 0 -181px;
+}
+.main .ta_add a{
+	display: block;
+    width: 45px;
+    height: 14px;
+    float: right;
+    background: url(../img/public.png) no-repeat 0 -162px
+}
+.main .ta_del a{
+	display: block;
+	height: 30px;
+}
+.main td,th{
+	border: 1px solid #bebebe;
+	border-left: 0;
+	border-right: 0;
+	height: 30px;
+}
+.main tbody tr:nth-child(even){
+	background: #f1f1f1;
+}
+.main tbody tr a{
+	display: block;
+	width: 16px;
+	height: 16px;
+	margin: 0 auto;
+}
+.main .sb_state a{
+	background: url(../img/public.png) no-repeat -35px -224px;
+}
+.main .sb_stateno a{
+	background-position: -65px -224px;
+}
+.main .sb_share a{
+	background: url(../img/public.png) no-repeat -63px -247px;
+}
+.main .sb_shareno a{
+	background-position: -34px -247px;
+}
+.main .sb_edit a{
+	background: url(../img/public.png) no-repeat -90px -247px;
+}
+
+.ta_bottom{
+	margin: 12px 25px 50px 28px;
+}
+.ta_bleft{
+	float:left;
+}
+.ta_bright{
+	float: right;
+}
+.ta_bright a{
+	color: #000;
+}
+.ta_bright .ta_btn{
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #a3a3a3;
+	background:url(../img/pagebj.jpg) repeat-x left bottom;
+	text-align: center;
+}
+.ta_bright .ta_focus{
+	background: #417eb7;
+	color: #fff;
+}
+.ta_bright .ta_btn:hover{
+	background: #417eb7;
+	color: #fff;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>会员注册</title>
+	<meta name="author" content="SHOP++ Team">
+	<meta name="copyright" content="SHOP++" />
+	<link rel="stylesheet" href="./prd/styles/registerApp@f614dde17a4f7ec3540b68474d97dd3a.css" type="text/css"/>
+</head>
+<body>
+	<div class="f_password">
+		<div class="f_p_logo">
+			<a href="./index.html">
+				<img src="./images/login/logo.png">
+			</a>
+		</div>
+	</div>
+  	<div class="forgerPassword register_title" id="tab1">
+    	<h1>注册&nbsp;玩咖智能生活商城&nbsp;账号</h1>
+    	<p class="suc_p">玩咖帐号能使用玩咖社区等其它服务。如果您已拥有玩咖帐号，则可
+          <a class="cor_yellow" href="./login.html">在此登录</a>
+      	</p>
+    	<div id="reg_tab">
+	    	<div id="reg_tab_title">
+	         	<label  class="selected"><span>邮箱或手机号注册</span></label>
+	    	</div>
+	    	<div id="reg_tab_content">
+	    		<!--手机邮箱注册-->
+		        <div class="f_password_form">
+			      <form id="registerForm" action="../web/registered" method="post" novalidate="novalidate">
+			        <table border="0" cellspacing="0" cellpadding="0">
+			          <tbody>
+                  <tr>
+  			            <th scope="row"><span class="requiredField">*</span>用户名:</th>
+  			            <td>
+  			            	<input type="text" id="username" name="user.username" class="fine_name text" maxlength="50">
+  			            </td>
+  			          </tr>
+  			          <tr>
+  			            <th scope="row"><span class="requiredField">*</span>设置密码:</th>
+  			            <td><input type="password" id="password" name="user.password" class="fine_password text" maxlength="20" autocomplete="off"></td>
+  			          </tr>
+  			          <tr>
+  			            <th scope="row"><span class="requiredField">*</span>确认密码:</th>
+  			            <td><input type="password" name="rePassword" class="fine_password text rePassword" maxlength="20" autocomplete="off"></td>
+  			          </tr>
+  			          <tr>
+  			          </tr>
+  			          <tr>
+  			            <th scope="row">&nbsp;</th>
+  			            <td><input id="" type="button" class="fine_btn reg_btn" value="立刻注册"></td>
+  			          </tr>
+  			          <tr>
+  			            <th scope="row">&nbsp;</th>
+  			            <td><font color="#999">点击“立即注册”，即表示您同意并愿意遵守玩咖 </font><a target="_blank" style="color: #f00; text-decoration:underline;" href="http://www.wan-ka.com/register/agreement.jhtml">注册协议</a></td>
+  			          </tr>
+			          </tbody>
+              </table>
+			      </form>
+			    </div>
+	    	</div>
+		</div>
+ 	</div>
+
+  <div class="fine_footer">
+  	<p class="copyright">Copyright © 2005-2013 玩咖智能生活商城 版权所有</p>
+    <p class="copyright">粤ICP备11060697号-2</p>
+	</div>
+  <script type="text/javascript" src="./prd/scripts/registerApp@802da53205499eb920276164eeec3618.js"></script>
+</body>
+</html>
